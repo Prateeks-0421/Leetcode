@@ -33,10 +33,6 @@ public:
       if( hours > h ){
             l = mid + 1 ; 
       }
-    else  if(hours == h ){
-       r = mid - 1 ; 
-        ans = mid ; 
-      }
       else {
 
         r = mid - 1 ; 
