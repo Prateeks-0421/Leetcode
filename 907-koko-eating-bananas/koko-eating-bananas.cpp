@@ -2,7 +2,6 @@ class Solution {
 public:
     int minEatingSpeed(vector<int>& piles, int h) {
         
-    int minimum = piles[0] ; 
     int maximum = piles[0] ; 
     int ans = 0 ; 
 
