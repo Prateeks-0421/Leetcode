@@ -10,10 +10,8 @@ public:
 
      }
 
-
        return min(  solve( nums , i + 1 , j , dp , 0 ) - nums[i] , solve( nums , i , j - 1 , dp , 0 ) - nums[j]) ; 
 
-     
     }
     bool predictTheWinner(vector<int>& nums) {
 
