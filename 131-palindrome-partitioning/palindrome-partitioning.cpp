@@ -15,7 +15,7 @@ public:
 
     }
 
-    void solve(vector<vector<string>> & ans , string s , int i , vector<string> & temp ){
+    void solve(vector<vector<string>> & ans , string s , int i , int j , vector<string> & temp ){
 
     if( i == s.size() ) {
 
@@ -24,20 +24,22 @@ public:
 
     }
 
+    if(j == s.size() ){
+        return ; 
+    }
 
-    for(int j = i ; j < s.size() ; j++ ){    
+    if(ispalindrome(s.substr( i , j - i + 1  ))){
 
-    if( ispalindrome(s.substr( i , j - i + 1  ))) {
+    temp.push_back(s.substr( i , j - i + 1 )) ; 
 
-     temp.push_back(s.substr( i , j - i + 1 )) ; 
-
-     solve( ans , s , j + 1 , temp ) ; 
+     solve( ans , s , j + 1 , j + 1 , temp ) ; 
 
      temp.pop_back() ; 
 
     }
-        }
-    
+
+    solve( ans , s , i , j + 1 , temp ) ; 
+
       return ; 
     }
 
@@ -47,7 +49,7 @@ public:
     vector<vector<string>> ans ;
     vector<string> temp ; 
 
-    solve( ans , s , 0 ,  temp ) ;
+    solve( ans , s , 0 , 0 , temp ) ;
 
     return ans ;
 
