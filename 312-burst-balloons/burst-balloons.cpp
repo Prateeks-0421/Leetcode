@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int solve(vector<int> & nums , int left , int right , vector<vector<int>> & dp ){
+
+     if(left + 1 == right ){
+        return 0 ;
+     }
+
+     if(dp[left][right] != -1 ) return dp[left][right] ;
+     
+       int maximum = 0 ; 
+     
+    for( int i = left + 1 ; i < right ; i++ ){
+
+       maximum = max( maximum , nums[left] * nums[i] * nums[right] + solve(nums , left , i , dp) + solve(nums , i , right , dp ) ); 
+
+    }
+
+    return dp[left][right] = maximum ;
+
+     }
+    int maxCoins(vector<int>& nums) {
+
+     nums.insert(nums.begin() , 1 ) ; 
+     nums.push_back(1) ; 
+
+     vector<vector<int>> dp(nums.size() , vector<int> (nums.size() , -1 ) ) ; 
+        
+     return solve( nums , 0 , nums.size() - 1 , dp ) ;   
+
+
+    }
+};
