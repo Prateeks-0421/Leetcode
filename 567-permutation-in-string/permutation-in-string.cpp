@@ -4,7 +4,7 @@ public:
         
     unordered_map<int,int> freq ; 
     unordered_map<int,int> window ; 
-    vector<int> ans ;
+    bool ans  = false ;
 
     for(int i = 0 ; i < p.size() ; i++ ){
 
@@ -29,7 +29,7 @@ public:
 
      if(flag){
 
-       ans.push_back(i) ; 
+       ans = true ;
        window[s[i]]-- ; 
        i++ ; 
 
@@ -42,7 +42,7 @@ public:
     j++ ;  
 
     }
-    return ans.size() > 0 ; 
+    return ans ; 
          
 
     }
