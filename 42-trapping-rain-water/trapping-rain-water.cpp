@@ -24,6 +24,21 @@ public:
     st.push(i) ; 
 
     }
+    int maxi = 0 ; 
+    int maxiindex = height.size() - 1 ; 
+    vector<int> smaller(height.size() , -1 ) ; 
+
+    for(int i = height.size() - 1 ; i >= 0 ; i--){
+
+        if( height[i] > maxi ){
+            maxiindex = i ;
+            maxi = height[i] ; 
+        }
+        smaller[i] = maxiindex ; 
+
+    }
+
+
 
     while( l < height.size()  ){
 
@@ -31,15 +46,13 @@ public:
         int maximum = 0 ; 
 
         if(next[l] == -1  ) {
-           
-       for(int i = l + 1 ; i < height.size() ; i++ ){
-           if( maximum < height[i]){
-             maximum = height[i]  ; 
-            maxindex = i ; 
-           }
+          
+            if( l + 1 < height.size())
+            maxindex = smaller[l+1]; 
        }
 
-        }
+        // if(maxindex == -1 ) break ; 
+
         int r = 0  ; 
        if( next[l] != -1 )
        r = next[l] ; 
@@ -49,7 +62,6 @@ public:
 
        for(int i = l + 1 ; i < r ; i++ ){
 
-        
         ans = ans + ( min(height[l],height[r]) - height[i]) ; 
        }
        l = r ; 
