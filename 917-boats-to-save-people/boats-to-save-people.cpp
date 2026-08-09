@@ -10,11 +10,6 @@ public:
 
    while( i <= j ){ 
 
-    // if(people[j] >= limit ){
-    //     ans++ ;
-    //     j-- ; 
-    // }
-
      if(people[i] + people[j] > limit ){
         ans++ ; 
         j-- ; 
